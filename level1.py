@@ -10,7 +10,7 @@ from Impedimento import*
 from Score import*
 from Vidas import*
 from Funciones import*
-
+from Global import*
 
 ancho = 800
 alto = 600
@@ -18,7 +18,6 @@ alto = 600
 ventana =pygame.display.set_mode((ancho,alto))
 
 def level1():
-    
     global ventana
     pygame.init()
     Player1=Player()
@@ -29,13 +28,12 @@ def level1():
     pygame.mixer.music.play()
     pygame.mixer.music.set_volume(0.3)
     velocidad=1
-    level=1
     BarraVelocidad=Barra()
     Yuyos=AppenImpedimento()
     Yuyos.dibujarAppenImpedimento()
     pygame.display.set_caption("The Murderer Plant: Level 1")
     fondo=pygame.image.load("imag/fondo1.jpg")
-    while level==1:
+    while Global.level==1:
         ventana.blit(fondo,(0,0))
         BarraVelocidad.dibujarBarra(ventana)
         ContaVidas.dibujarVida(ventana)
@@ -151,5 +149,5 @@ def level1():
                 Player1.orientacion = 2
             if( pygame.key.get_pressed()[pygame.K_DOWN] and Player1.izq==False and Player1.der==False and Player1.up==False):
                 Player1.orientacion = 3
-        ContaVidas.comprobarVidas(ventana,level) #NUEVO
+        ContaVidas.comprobarVidas(ventana) #NUEVO
         pygame.display.update() 

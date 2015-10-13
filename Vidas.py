@@ -1,6 +1,8 @@
 import pygame,sys
 from pygame.locals import*
 
+from Global import*
+
 pygame.init()
 class Vidas(pygame.sprite.Sprite):
     def __init__(self):
@@ -21,7 +23,7 @@ class Vidas(pygame.sprite.Sprite):
         ventana.blit(self.texto,(650,self.rectvida.top))
         ventana.blit(self.texto2,(670,self.rectvida.top))
 
-    def comprobarVidas(self,ventana,level):
+    def comprobarVidas(self,ventana):
         
         if self.vidas==0:
             pygame.event.clear() #Limpiar todo.
@@ -36,9 +38,9 @@ class Vidas(pygame.sprite.Sprite):
                         sys.exit()
                     if evento.type == KEYDOWN:
                         if evento.key == K_m:
-                            level=0
+                            Global.level=0
                             perdio=False
-                            self.vidas=2
+                            self.vidas=10
                    
                 pygame.display.update()        
                    

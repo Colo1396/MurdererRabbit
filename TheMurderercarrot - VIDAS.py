@@ -3,13 +3,11 @@ import time
 from pygame.locals import*
 from random import randint
 
-from Player import*
-from Enemigo import*
+
+
+
 from Menu import*
-from BarraEnergia import*
-from Impedimento import*
-from Score import*
-from Vidas import*
+from Global import*
 from Funciones import*
 from level1 import*
 
@@ -26,6 +24,7 @@ ventana =pygame.display.set_mode((ancho,alto))
 def main():
         #label: juego
         global ventana
+        Global.level=0
         pygame.init()
         pygame.mixer.music.load("sonidos/Malmen Facing TheSky.ogg")
         pygame.mixer.music.play()
@@ -38,14 +37,10 @@ def main():
         
         Tapa=Menu()
        
-    
         Raton=Puntero()
-        level=0
-        
-        
         while True:
                 pygame.mouse.set_visible(False)
-                while level==0:
+                while Global.level==0:
                         ventana.blit(fondoini,(0,0))
                         Tapa.dibujar(ventana)
                         posX,posY=pygame.mouse.get_pos()
@@ -56,9 +51,9 @@ def main():
                                         sys.exit()
                         if Raton.rectimagpuntero.colliderect(Tapa.rectjugar):
                                 if pygame.mouse.get_pressed()==(1,0,0):
-                                        level=1
+                                        Global.level=1
                         pygame.display.update()
-                if level==1:
+                if Global.level==1:
                         level1()
 
 main()
