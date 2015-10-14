@@ -1,7 +1,7 @@
 import pygame,sys
 from pygame.locals import*
 
-from Global import*
+#from Global import* #NO HACE FALTA HACER ESTO PORQUE SE LO MANDO COMO PARAMETRO AHORA
 
 pygame.init()
 class Vidas(pygame.sprite.Sprite):
@@ -10,7 +10,7 @@ class Vidas(pygame.sprite.Sprite):
         self.rectvida=self.imgvida.get_rect()
         self.rectvida.left = 600
         self.rectvida.top=15
-        self.vidas=10
+        self.vidas=2
 
         self.imgGAMEOVER=pygame.image.load("imag/gameover.png")
         
@@ -23,7 +23,7 @@ class Vidas(pygame.sprite.Sprite):
         ventana.blit(self.texto,(650,self.rectvida.top))
         ventana.blit(self.texto2,(670,self.rectvida.top))
 
-    def comprobarVidas(self,ventana):
+    def comprobarVidas(self,ventana,Global):
         
         if self.vidas==0:
             pygame.event.clear() #Limpiar todo.
