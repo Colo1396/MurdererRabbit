@@ -54,6 +54,6 @@ def main():
                                         Global.level=1
                         pygame.display.update()
                 if Global.level==1:
-                        level1()
+                        level1(Raton)
 
 main()

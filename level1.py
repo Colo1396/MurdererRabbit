@@ -17,7 +17,7 @@ alto = 600
 
 ventana =pygame.display.set_mode((ancho,alto))
 
-def level1():
+def level1(Raton):
     global ventana
     pygame.init()
     Player1=Player()
@@ -149,5 +149,5 @@ def level1():
                 Player1.orientacion = 2
             if( pygame.key.get_pressed()[pygame.K_DOWN] and Player1.izq==False and Player1.der==False and Player1.up==False):
                 Player1.orientacion = 3
-        ContaVidas.comprobarVidas(ventana,Global) #NUEVO envio la clase Global como parametro y no hace falta llamarla desde la funcion con un import
+        ContaVidas.comprobarVidas(ventana,Global,Raton) #NUEVO envio la clase Global como parametro y no hace falta llamarla desde la funcion con un import
         pygame.display.update() 
