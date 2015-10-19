@@ -149,5 +149,6 @@ def level1(Raton):
                 Player1.orientacion = 2
             if( pygame.key.get_pressed()[pygame.K_DOWN] and Player1.izq==False and Player1.der==False and Player1.up==False):
                 Player1.orientacion = 3
-        ContaVidas.comprobarVidas(ventana,Global,Raton) #NUEVO envio la clase Global como parametro y no hace falta llamarla desde la funcion con un import
+
+        ContaVidas.comprobarVidas(ventana,Global,Raton,Puntaje) #NUEVO envio la clase Global como parametro y no hace falta llamarla desde la funcion con un import
         pygame.display.update() 

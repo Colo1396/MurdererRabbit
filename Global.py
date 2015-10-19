@@ -7,3 +7,5 @@ pygame.init()
 class Global(object):
     def __init__(self):
         self.level=0
+        self.score=False
+        self.newscore=False
