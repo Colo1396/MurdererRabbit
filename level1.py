@@ -33,8 +33,24 @@ def level1(Raton):
     Yuyos.dibujarAppenImpedimento()
     pygame.display.set_caption("The Murderer Plant: Level 1")
     fondo=pygame.image.load("imag/fondo1.jpg")
+    tiempo = pygame.time.get_ticks()/1000
+    t = tiempo  # guardo el tiempo actual
+    n=1 	#
+    segundos=0
+    seg=120
+    Fuente = pygame.font.SysFont("Arial",30)
     while Global.level==1:
         ventana.blit(fondo,(0,0))
+################## TIEMPO ########################
+        tiempo = (pygame.time.get_ticks()/1000) - t # aca resto el tiempo guardado     
+        if tiempo==n:
+            segundos=seg
+        else:
+            seg= seg-1
+            n=tiempo   
+        contador= Fuente.render("Tiempo : "+str(segundos),0,(120,70,0))
+        ventana.blit(contador,(50,70))    
+##############################
         BarraVelocidad.dibujarBarra(ventana)
         ContaVidas.dibujarVida(ventana)
         Puntaje.dibujarScore(ventana)
