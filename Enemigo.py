@@ -3,8 +3,7 @@ import time
 from pygame.locals import*
 from random import randint
 
-#Prueba 1
-pygame.init()
+
 class Enemigo(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)

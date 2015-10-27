@@ -5,7 +5,6 @@ from random import randint
 from Puntero import*
 
 
-pygame.init()
 class Menu(pygame.sprite.Sprite):
     def __init__(self):
         self.jugar=pygame.image.load("imag/jugar.png")

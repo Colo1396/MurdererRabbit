@@ -2,7 +2,6 @@ import pygame,sys
 from pygame.locals import*
 
 
-pygame.init()
 class Score(pygame.sprite.Sprite):
     def __init__(self):
         self.imagscore= pygame.image.load("imag/score.png")

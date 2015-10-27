@@ -1,3 +1,4 @@
+# -*- coding: cp1252 -*-
 import pygame,sys
 import time
 from pygame.locals import*
@@ -17,15 +18,46 @@ ancho = 800
 alto = 600
 ventana =pygame.display.set_mode((ancho,alto))
 
-######### Funciones sueltas
+######### Funcion intro: 3 segundos#######
+def intro():
+        global ventana
+        fond=pygame.image.load("imag/fondo1.jpg")
+        PJ= pygame.image.load("imag/z/zi1.png")
+        rect= PJ.get_rect()
+        rect.left=325
+        rect.top=200
+        tiempo=0
+        Fuente = pygame.font.Font('fonts/fuentefavorita.ttf',80)
+        fuenteNumero = pygame.font.SysFont('fonts/fuentefavorita.ttf',50)
+        preparado = fuenteNumero.render("Comenzando en",0,(0,20,255))
+        while tiempo < 800:
+                ventana.blit(fond,(0,0))
+                ventana.blit(PJ,rect)
+                tiempo = tiempo + 1
+                if tiempo < 200:
+                        ventana.blit(preparado,(270,30))
+                        contador= Fuente.render(" 3 ",0,(255,0,0))
+                        
+                elif tiempo < 400:
+                        ventana.blit(preparado,(270,30))
+                        contador= Fuente.render(" 2 ",0,(255,255,0))
+                elif tiempo < 600:
+                        ventana.blit(preparado,(270,30))
+                        contador= Fuente.render(" 1 ",0,(0,255,0))
+                elif tiempo < 800:
+                        contador= Fuente.render("A darle caña!!!",0,(255,160,0))
+                if tiempo < 600:
+                        ventana.blit(contador,(350,150))
+                else:
+                        ventana.blit(contador,(270,100))
+                pygame.display.update() 
 
    
 ######TERMINAN LAS CLASES Y ARRANCAN LAS VARIABLES##########
 def main():
-        #label: juego
+        pygame.init()
         global ventana
         Global.level=0
-        pygame.init()
         pygame.mixer.music.load("sonidos/Malmen Facing TheSky.ogg")
         pygame.mixer.music.play()
         pygame.mixer.music.set_volume(0.3)
@@ -54,6 +86,7 @@ def main():
                                         Global.level=1
                         pygame.display.update()
                 if Global.level==1:
+                        intro()
                         level1(Raton)
                 
                         

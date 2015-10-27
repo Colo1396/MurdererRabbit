@@ -3,7 +3,7 @@ import time
 from pygame.locals import*
 from random import randint
 
-pygame.init()
+
 class Barra(pygame.sprite.Sprite):
     def __init__(self):
         self.colorRect=(100,255,100)

@@ -3,7 +3,7 @@ import time
 from pygame.locals import*
 from random import randint
 
-pygame.init()
+
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         self.izq=False
@@ -29,7 +29,12 @@ class Player(pygame.sprite.Sprite):
                             ["imag/z/zgd1.png","imag/z/zgd2.png","imag/z/zgd3.png","imag/z/zgd4.png","imag/z/zgd5.png"],
                             ["imag/z/zgar1.png","imag/z/zgar2.png","imag/z/zgar3.png","imag/z/zgar4.png","imag/z/zgar5.png"],
                             ["imag/z/zgab1.png","imag/z/zgab2.png","imag/z/zgab3.png","imag/z/zgab4.png","imag/z/zgab5.png"]]
-
+        self.choco = False
+        self.refrescoChoque=0
+        self.p=0
+        self.listaChoco=["imag/choque/zan1.png","imag/choque/zan2.png","imag/choque/zan3.png","imag/choque/zan4.png","imag/choque/zan5.png","imag/choque/zan6.png","imag/choque/zan7.png","imag/choque/zan8.png","imag/choque/zan9.png","imag/choque/zan10.png"]
+        self.imagChoco = pygame.image.load(self.listaChoco[self.p])
+        
         self.usuario=pygame.image.load(self.listapasosz[self.orientacion][self.i])#el primero de rango 0 a 3, el segundo 0 a 11
         self.rectusuario=self.usuario.get_rect()
         self.rectusuario.left=325
@@ -198,3 +203,19 @@ class Player(pygame.sprite.Sprite):
                 self.i+=1
         else:
             self.refresco-=1
+
+    def choque(self,ventana):
+        if self.refrescoChoque==0:
+            if self.p >= len(self.listaChoco):
+                self.p=0
+                self.choco= False
+            self.imagChoco= pygame.image.load(self.listaChoco[self.p])
+            self.p+=1
+            self.refrescoChoque = 10
+        else:
+            self.refrescoChoque-=1
+        ventana.blit(self.imagChoco,self.rectusuario)
+
+
+
+    

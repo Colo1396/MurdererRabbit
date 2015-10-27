@@ -3,7 +3,7 @@ import time
 from pygame.locals import*
 from random import randint
 
-pygame.init()
+
 class Impedimento(pygame.sprite.Sprite):
     def __init__(self,Xaux,Yaux,ID):
         self.IDnumero=ID

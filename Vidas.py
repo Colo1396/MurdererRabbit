@@ -3,7 +3,6 @@ from pygame.locals import*
 from FuncionesArchivos import *
 from Global import* #NO HACE FALTA HACER ESTO PORQUE SE LO MANDO COMO PARAMETRO AHORA
 
-pygame.init()
 class Vidas(pygame.sprite.Sprite):
     def __init__(self):
         self.imgvida=pygame.image.load("imag/corazongrande.png")

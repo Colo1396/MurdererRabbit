@@ -11,6 +11,7 @@ from Score import*
 from Vidas import*
 from Funciones import*
 from Global import*
+from Chocador import*
 
 ancho = 800
 alto = 600
@@ -19,7 +20,10 @@ ventana =pygame.display.set_mode((ancho,alto))
 
 def level1(Raton):
     global ventana
-    pygame.init()
+    Chocador1 = Chocador(1)
+    Chocador2 = Chocador(2)
+    Chocador3 = Chocador(3)
+    listaChocador = [Chocador1,Chocador2,Chocador3]
     Player1=Player()
     Conejo=Enemigo()
     Puntaje=Score()
@@ -74,12 +78,24 @@ def level1(Raton):
                     Player1.rectgolpear.top=Player1.posYanterior+140
                     Player1.rectgolpeab.left=Player1.posXanterior+70
                     Player1.rectgolpeab.top=Player1.posYanterior+180
-                    
-        if Player1.rectcolisionante.top<Conejo.rectconejo.top+175:
-            Player1.dibujar(ventana)
+        ## control de chocadores
+        num=1
+        for ChocadorL in listaChocador:
+            ChocadorL.llamarChocador(num)
+            ChocadorL.movimiento(ventana)
+            num= num +1
+            if Player1.rectcolisionante.colliderect(ChocadorL.rectChocador):
+                ChocadorL.sonidoChoque.play()
+                Player1.choco=True
+        if Player1.choco==True:
+            Player1.choque(ventana)
+        if Player1.choco!=True:           
+            if Player1.rectcolisionante.top<Conejo.rectconejo.top+175:
+                Player1.dibujar(ventana)
         probConejo(ventana,Conejo,ContaVidas)
-        if Player1.rectcolisionante.top>=Conejo.rectconejo.top+175:
-            Player1.dibujar(ventana)
+        if Player1.choco!= True:
+            if Player1.rectcolisionante.top>=Conejo.rectconejo.top+175:
+                Player1.dibujar(ventana)
             
         for evento in pygame.event.get():
             pygame.event.set_blocked(pygame.MOUSEMOTION)
@@ -136,26 +152,26 @@ def level1(Raton):
                     Player1.up=False
                 if evento.key==K_DOWN:
                     Player1.down=False
-
-        if Player1.corre==True:
-            if BarraVelocidad.valorx>10:
-                velocidad = 3
-                Player1.tiempoRefresco=5
-                BarraVelocidad.valorx-=1
+        if Player1.choco!=True:
+            if Player1.corre==True:
+                if BarraVelocidad.valorx>10:
+                    velocidad = 3
+                    Player1.tiempoRefresco=5
+                    BarraVelocidad.valorx-=1
+                else:
+                    Player1.tiempoRefresco=10
+                    velocidad = 1
             else:
-                Player1.tiempoRefresco=10
                 velocidad = 1
-        else:
-            velocidad = 1
-            Player1.tiempoRefresco=10
-            BarraVelocidad.valorx+=2
-            
-        if Player1.golpe!=True:
-            Player1.moviendose(velocidad)
-            Player1.limitemapa()
-            Player1.nextimage()
-        else:
-            Player1.golpenextimage()
+                Player1.tiempoRefresco=10
+                BarraVelocidad.valorx+=2
+                
+            if Player1.golpe!=True:
+                Player1.moviendose(velocidad)
+                Player1.limitemapa()
+                Player1.nextimage()
+            else:
+                Player1.golpenextimage()
             
 #SI PONEMOS ESTO SE BUGEA TODO. DEJARLO APAGADO         pygame.event.clear()   #esto borra todos los eventos de la cola
         if Player1.golpe==False:

@@ -3,7 +3,6 @@ import time
 from pygame.locals import*
 from random import randint
 
-pygame.init()
 class Puntero(pygame.sprite.Sprite):
     def __init__(self):
         self.imagpuntero=pygame.image.load("imag/puntero.png")

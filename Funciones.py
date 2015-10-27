@@ -6,7 +6,6 @@ from random import randint
 from Enemigo import*
 from Vidas import*
 
-pygame.init()
 
 tx=0
 tz=0
