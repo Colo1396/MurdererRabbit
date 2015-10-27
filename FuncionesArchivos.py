@@ -165,7 +165,7 @@ def newscore(ventana,Puntaje,Raton):
         ventana.blit(imgder,(625,220))
         Raton.dibujar(ventana,posX,posY)
 
-        if Raton.rectimagpuntero.colliderect(101,323,180,67): #BOTON DE GUARDAR SCORE
+        if Raton.rectimagpuntero.colliderect(355,350,1090,31): #BOTON DE GUARDAR SCORE
             if pygame.mouse.get_pressed()==(1,0,0):
                 nombre=(primera.lista[primera.i] + segunda.lista[segunda.i] + tercera.lista[tercera.i])
                 guardardatos(Puntaje,nombre)

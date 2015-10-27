@@ -81,9 +81,15 @@ def main():
                                 if evento.type == QUIT:
                                         pygame.quit()
                                         sys.exit()
+                        #SI CHOCA CON BOTON JUGAR:
                         if Raton.rectimagpuntero.colliderect(Tapa.rectjugar):
                                 if pygame.mouse.get_pressed()==(1,0,0):
                                         Global.level=1
+                        #SI CHOCA CON BOTON SALIR:
+                        if Raton.rectimagpuntero.colliderect(Tapa.rectpuntaje):
+                                if pygame.mouse.get_pressed()==(1,0,0):
+                                        pygame.quit()
+                                        sys.exit()
                         pygame.display.update()
                 if Global.level==1:
                         intro()
