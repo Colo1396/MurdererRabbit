@@ -1,4 +1,0 @@
-Linea 1
-Linea 2
-Linea 3
-http://pythonya.appspot.com/detalleconcepto?deta=Creaci%C3%B3n,%20carga%20y%20lectura%20de%20archivos%20de%20texto

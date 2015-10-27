@@ -37,8 +37,8 @@ def level1(Raton):
     t = tiempo  # guardo el tiempo actual
     n=1 	#
     segundos=0
-    seg=120
-    Fuente = pygame.font.SysFont("Arial",30)
+    seg=32
+    Fuente=pygame.font.Font('fonts/fuentefavorita.ttf',50)
     while Global.level==1:
         ventana.blit(fondo,(0,0))
 ################## TIEMPO ########################
@@ -47,12 +47,14 @@ def level1(Raton):
             segundos=seg
         else:
             seg= seg-1
-            n=tiempo   
-        contador= Fuente.render("Tiempo : "+str(segundos),0,(120,70,0))
-        ventana.blit(contador,(50,70))    
+            n=tiempo
+        if seg==0:
+            ContaVidas.vidas=0
+        contador= Fuente.render("Tiempo: "+str(segundos),0,(70,00,250))
+        ventana.blit(contador,(570,10))    
 ##############################
         BarraVelocidad.dibujarBarra(ventana)
-        ContaVidas.dibujarVida(ventana)
+        #ContaVidas.dibujarVida(ventana)
         Puntaje.dibujarScore(ventana)
         if len(Yuyos.listaImpedimento)>0:
             for x in Yuyos.listaImpedimento:

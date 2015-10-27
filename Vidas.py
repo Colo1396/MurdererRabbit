@@ -1,7 +1,7 @@
 import pygame,sys
 from pygame.locals import*
 from FuncionesArchivos import *
-#from Global import* #NO HACE FALTA HACER ESTO PORQUE SE LO MANDO COMO PARAMETRO AHORA
+from Global import* #NO HACE FALTA HACER ESTO PORQUE SE LO MANDO COMO PARAMETRO AHORA
 
 pygame.init()
 class Vidas(pygame.sprite.Sprite):
@@ -10,19 +10,18 @@ class Vidas(pygame.sprite.Sprite):
         self.rectvida=self.imgvida.get_rect()
         self.rectvida.left = 600
         self.rectvida.top=15
-        self.vidas=10
+        self.vidas=10000
 
-        self.imgGAMEOVER=pygame.image.load("imag/GameOver/FinDelJuego.png")
-        self.botmenu=pygame.image.load("imag/GameOver/MENUAP.png")
-        self.botcred=pygame.image.load("imag/GameOver/CREDITSAP.png")
-        self.botexit=pygame.image.load("imag/GameOver/EXITAP.png")
-        self.botscore=pygame.image.load("imag/GameOver/SCOREAP.png")
+        self.imgGAMEOVER=pygame.image.load("imag/GameOver/FinDelJuego.JPG")
+        
+
+        #imgnewscore=pygame.image.load("imag/GameOver/NewScore.JPG")
         
 
     def dibujarVida(self,ventana):
         self.fuente=pygame.font.Font('fonts/fuente.ttf',45)
-        self.texto=self.fuente.render("=",0,(238,252,48))
-        self.texto2=self.fuente.render(str (self.vidas),1,(238,252,48))
+        self.texto=self.fuente.render("=",0,(50,50,250))
+        self.texto2=self.fuente.render(str (self.vidas),1,(50,50,250))
         ventana.blit(self.imgvida,self.rectvida)
         ventana.blit(self.texto,(650,self.rectvida.top))
         ventana.blit(self.texto2,(670,self.rectvida.top))
@@ -30,50 +29,69 @@ class Vidas(pygame.sprite.Sprite):
     def comprobarVidas(self,ventana,Global,Raton,Puntaje):
         Global.score=False
         Global.newscore=False
-        
         if self.vidas==0:
             pygame.event.clear() #Limpiar todo.
             perdio=True
             compruebascore(Puntaje,ventana)
             if Global.newscore==True:
-                newscore(ventana)
+                newscore(ventana,Puntaje,Raton)
 
             while perdio==True:
+                
+                self.botmenu=pygame.image.load("imag/GameOver/menu1.png")
+                self.botcred=pygame.image.load("imag/GameOver/cred1.png")
+                self.botexit=pygame.image.load("imag/GameOver/exit1.png")
+                self.botscore=pygame.image.load("imag/GameOver/score1.png")
                 ventana.blit(self.imgGAMEOVER,(0,0))
+                ventana.blit(self.botmenu,(91,455))#Dibujo el boton menu
+                ventana.blit(self.botscore,(206,455)) #dibujo el boton score
+                ventana.blit(self.botcred,(263,514)) #dibujo el boton creditos
+                ventana.blit(self.botexit,(126,514)) #dibujo el boton exit
+                
                 posX,posY=pygame.mouse.get_pos()
 
 
                 #SI COLISIONA CON MENU
-                if Raton.rectimagpuntero.colliderect(222,464,80,32):
-                    ventana.blit(self.botmenu,(212,454))
+                if Raton.rectimagpuntero.colliderect(131,471,64,28):
+                    
+                    self.botmenu=pygame.image.load("imag/GameOver/menu2.png")
+                    ventana.blit(self.botmenu,(91,455))
+                    
                     if pygame.mouse.get_pressed()==(1,0,0):
                         Global.score=False
                         Global.level=0
                         perdio=False
 
                 #SI COLISIONA CON SCORE:
-                if Raton.rectimagpuntero.colliderect(334,462,85,34):
-                    ventana.blit(self.botscore,(330,454))
+                elif Raton.rectimagpuntero.colliderect(247,472,60,41):
+                    self.botscore=pygame.image.load("imag/GameOver/score2.png")
+                    
+                    ventana.blit(self.botscore,(206,455))
                     if pygame.mouse.get_pressed()==(1,0,0):
                         Global.score=True
-                        self.imgGAMEOVER=pygame.image.load("imag/GameOver/FinDelJuegoscores.png")
+                        self.imgGAMEOVER=pygame.image.load("imag/GameOver/FDJscores.jpg")
                         
                             
                 #SI COLISIONA CON CREDITS:
-                if Raton.rectimagpuntero.colliderect(256,521,92,46):
-                    ventana.blit(self.botcred,(244,511))
+                elif Raton.rectimagpuntero.colliderect(314,534,90,39):
+                    self.botcred=pygame.image.load("imag/GameOver/cred2.png")
+                    
+                    ventana.blit(self.botcred,(263,514))
                     if pygame.mouse.get_pressed()==(1,0,0):
                         Global.score=False
-                        self.imgGAMEOVER=pygame.image.load("imag/GameOver/FinDelJuegocred.png")
+                        self.imgGAMEOVER=pygame.image.load("imag/GameOver/FDScred.jpg")
                     
                     
                 #SI COLISIONA CON EXIT:
-                if Raton.rectimagpuntero.colliderect(385,523,99,43):
-                    ventana.blit(self.botexit,(379,511)) #Boton brillando
+                elif Raton.rectimagpuntero.colliderect(184,536,73,36):
+                    self.botexit=pygame.image.load("imag/GameOver/exit2.png")
+                    
+                    ventana.blit(self.botexit,(126,514)) #Boton brillando
                     if pygame.mouse.get_pressed()==(1,0,0):
                         Global.score=False
                         pygame.quit()
                         sys.exit()
+
                     
                 for evento in pygame.event.get():
                     if evento.type == QUIT:
