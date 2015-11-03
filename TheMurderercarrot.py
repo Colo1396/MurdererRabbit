@@ -85,6 +85,9 @@ def main():
                         if Raton.rectimagpuntero.colliderect(Tapa.rectjugar):
                                 if pygame.mouse.get_pressed()==(1,0,0):
                                         Global.level=1
+                        if Raton.rectimagpuntero.colliderect(Tapa.recttutorial):
+                                if pygame.mouse.get_pressed()==(1,0,0):
+                                        Tapa.ElTutorial(ventana,Raton)
                         #SI CHOCA CON BOTON SALIR:
                         if Raton.rectimagpuntero.colliderect(Tapa.rectpuntaje):
                                 if pygame.mouse.get_pressed()==(1,0,0):

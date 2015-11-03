@@ -22,7 +22,7 @@ class Enemigo(pygame.sprite.Sprite):
         self.flagsube=True
         self.expuesto = 0   #por cada ciclo de procesos aumenta uno, con esto se controla cuanto tiempo va a aparecer el conejo
         self.tiempoexpuesto = 50
-
+        self.soundSalida= pygame.mixer.Sound("sonidos/pop.ogg")
         self.rectconejo.left=0
         self.rectconejo.top=0
 

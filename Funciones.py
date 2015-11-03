@@ -70,4 +70,5 @@ def probConejo(ventana,Conejo,ContaVidas):
             Conejo.rectconejo.top=posY
             Conejo.hayConejo=True
             Conejo.conejoGolpeado=False
+            Conejo.soundSalida.play()
         Conejo.dibujarEnemigo(ventana,ContaVidas)
