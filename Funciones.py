@@ -9,26 +9,39 @@ from Vidas import*
 
 tx=0
 tz=0
-def EvaluarGolpe(x,Player1,Conejo,Puntaje):
+def EvaluarGolpe(x,Player1,Conejo,Puntaje,Global,ventana):
         if Player1.rectgolpeizq.colliderect(x.rectyuyo) and Player1.orientacion==0 and Player1.golpe==True and Conejo.conejoExpuesto==x.IDnumero:
             Conejo.conejoGolpeado=True
             Conejo.sonidoconejogolpe.play()
             Puntaje.score+=1
+            Global.combo+=1
+            
         elif Player1.rectgolpeder.colliderect(x.rectyuyo) and Player1.orientacion==1 and Player1.golpe==True and Conejo.conejoExpuesto==x.IDnumero :
             Conejo.conejoGolpeado=True
             Conejo.sonidoconejogolpe.play()
             Puntaje.score+=1
+            Global.combo+=1
+           
         elif Player1.rectgolpear.colliderect(x.rectyuyo) and Player1.orientacion==2 and Player1.golpe==True and Conejo.conejoExpuesto==x.IDnumero :
             Conejo.conejoGolpeado=True
             Conejo.sonidoconejogolpe.play()
             Puntaje.score+=1
+            Global.combo+=1
+           
         elif Player1.rectgolpeab.colliderect(x.rectyuyo) and Player1.orientacion==3 and Player1.golpe==True and Conejo.conejoExpuesto==x.IDnumero :
             Conejo.conejoGolpeado=True
             Conejo.sonidoconejogolpe.play()
             Puntaje.score+=1
+            Global.combo+=1
         else:
             pass
-def probConejo(ventana,Conejo,ContaVidas):
+
+
+
+
+        
+        
+def probConejo(ventana,Conejo,ContaVidas,Global):
         global tx
         global tz
         if Conejo.hayConejo==False:
@@ -71,4 +84,4 @@ def probConejo(ventana,Conejo,ContaVidas):
             Conejo.hayConejo=True
             Conejo.conejoGolpeado=False
             Conejo.soundSalida.play()
-        Conejo.dibujarEnemigo(ventana,ContaVidas)
+        Conejo.dibujarEnemigo(ventana,ContaVidas,Global)

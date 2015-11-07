@@ -8,3 +8,9 @@ class Global(object):
         self.level=0
         self.score=False
         self.newscore=False
+        self.seg=32
+        self.combo=0
+
+        
+
+        

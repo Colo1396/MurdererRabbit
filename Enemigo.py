@@ -1,5 +1,6 @@
 import pygame,sys
 import time
+
 from pygame.locals import*
 from random import randint
 
@@ -26,7 +27,7 @@ class Enemigo(pygame.sprite.Sprite):
         self.rectconejo.left=0
         self.rectconejo.top=0
 
-    def dibujarEnemigo(self,ventana,ContaVidas):
+    def dibujarEnemigo(self,ventana,ContaVidas,Global):
         if self.conejoGolpeado==False:
             self.estadoConejo=self.listaconejo
         else:
@@ -53,6 +54,8 @@ class Enemigo(pygame.sprite.Sprite):
                         self.hayConejo=False
                         if self.conejoGolpeado == False:
                             ContaVidas.vidas-=1
+                            Global.combo=0
+                            
             else:
                 self.tiepoRefresco-=1
                 

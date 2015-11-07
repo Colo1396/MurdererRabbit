@@ -2,6 +2,7 @@ import pygame,sys
 import time
 from pygame.locals import*
 from random import randint
+from Global import *
 
 
 class Barra(pygame.sprite.Sprite):
@@ -13,8 +14,11 @@ class Barra(pygame.sprite.Sprite):
         self.rectbarra=self.barra.get_rect()
         self.rectbarra.left=15
         self.rectbarra.top=15
+        self.reloj=pygame.image.load("imag/reloj.png")
+    
 
     def dibujarBarra(self,ventana):
+        
         if self.valorx > 316:
             self.valorx = 316
         if self.valorx < 0:
@@ -40,3 +44,6 @@ class Barra(pygame.sprite.Sprite):
             self.colorRect=(255,0,0)
         self.Rectangulo=pygame.draw.rect(ventana,self.colorRect,(15,15,self.valorx,36))
         ventana.blit(self.barra,self.rectbarra)
+        ventana.blit(self.reloj,(30,60))
+
+            

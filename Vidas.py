@@ -10,9 +10,9 @@ class Vidas(pygame.sprite.Sprite):
         self.rectvida.left = 600
         self.rectvida.top=15
         self.vidas=10000
-
-        self.imgGAMEOVER=pygame.image.load("imag/GameOver/FinDelJuego.JPG")
         
+        self.imgGAMEOVER=pygame.image.load("imag/GameOver/FinDelJuego.JPG")
+        self.sonidotecla=pygame.mixer.Sound("sonidos/tecla.ogg")
 
         #imgnewscore=pygame.image.load("imag/GameOver/NewScore.JPG")
         
@@ -34,7 +34,7 @@ class Vidas(pygame.sprite.Sprite):
             compruebascore(Puntaje,ventana)
             if Global.newscore==True:
                 newscore(ventana,Puntaje,Raton)
-
+            #sonidotecla=pygame.mixer.Sound("sonidos/tecla.mp3")
             while perdio==True:
                 
                 self.botmenu=pygame.image.load("imag/GameOver/menu1.png")
@@ -57,6 +57,7 @@ class Vidas(pygame.sprite.Sprite):
                     ventana.blit(self.botmenu,(91,455))
                     
                     if pygame.mouse.get_pressed()==(1,0,0):
+                        self.sonidotecla.play()
                         Global.score=False
                         Global.level=0
                         perdio=False
@@ -67,6 +68,7 @@ class Vidas(pygame.sprite.Sprite):
                     
                     ventana.blit(self.botscore,(206,455))
                     if pygame.mouse.get_pressed()==(1,0,0):
+                        self.sonidotecla.play()
                         Global.score=True
                         self.imgGAMEOVER=pygame.image.load("imag/GameOver/FDJscores.jpg")
                         
@@ -77,6 +79,7 @@ class Vidas(pygame.sprite.Sprite):
                     
                     ventana.blit(self.botcred,(263,514))
                     if pygame.mouse.get_pressed()==(1,0,0):
+                        self.sonidotecla.play()
                         Global.score=False
                         self.imgGAMEOVER=pygame.image.load("imag/GameOver/FDScred.jpg")
                     
@@ -87,6 +90,7 @@ class Vidas(pygame.sprite.Sprite):
                     
                     ventana.blit(self.botexit,(126,514)) #Boton brillando
                     if pygame.mouse.get_pressed()==(1,0,0):
+                        self.sonidotecla.play()
                         Global.score=False
                         pygame.quit()
                         sys.exit()

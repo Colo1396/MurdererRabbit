@@ -8,7 +8,8 @@ class Score(pygame.sprite.Sprite):
         self.rectscore=self.imagscore.get_rect()
         self.rectscore.left=435
         self.rectscore.top=15
-        self.score=8
+        self.score=0
+        
 
         
 

@@ -45,7 +45,7 @@ class Menu(pygame.sprite.Sprite):
                 if evento.type == QUIT:
                     pygame.quit()
                     sys.exit()
-                if Raton.rectimagpuntero.colliderect(self.rectBack):
+                if Raton.rectimagpuntero.colliderect(578,425,62,30):
                     if pygame.mouse.get_pressed()==(1,0,0):
                         self.estaTutorial=False
 
